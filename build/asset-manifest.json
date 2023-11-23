@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.86d55d7b.css",
-    "main.js": "/static/js/main.45b5a1ee.js",
+    "main.js": "/static/js/main.8ea1ac00.js",
     "static/media/MCF-BG.jpg": "/static/media/MCF-BG.fd728bb5efa49c6dead7.jpg",
     "static/media/MCFLogo.jpg": "/static/media/MCFLogo.6ce4a792660288747981.jpg",
     "index.html": "/index.html",
     "main.86d55d7b.css.map": "/static/css/main.86d55d7b.css.map",
-    "main.45b5a1ee.js.map": "/static/js/main.45b5a1ee.js.map"
+    "main.8ea1ac00.js.map": "/static/js/main.8ea1ac00.js.map"
   },
   "entrypoints": [
     "static/css/main.86d55d7b.css",
-    "static/js/main.45b5a1ee.js"
+    "static/js/main.8ea1ac00.js"
   ]
 }
