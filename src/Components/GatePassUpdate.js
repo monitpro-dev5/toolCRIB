@@ -64,13 +64,10 @@ function GatePassUpdate() {
   const [Remarks, setRemarks] = useState("");
 
   const [Status, setStatus] = useState("");
-  console.log(Status);
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState();
   const [UploadedIcon, setUploadedIcon] = useState(false);
   //#endregion
-
-  console.log("SSsadSS", fileName);
 
   useEffect(() => {
     if (id > 0) {

@@ -14,8 +14,6 @@ import MCFLogo from "../../Images/MCFLogo.jpg";
 function MyDocument() {
   const { id } = useParams();
 
-  const pdfName = "document";
-
   // Create styles
   const styles = StyleSheet.create({
     page: {
@@ -39,12 +37,19 @@ function MyDocument() {
     aligncenter: {
       textAlign: "center",
     },
-    font12: {
-      fontSize: 12,
-    },
+
+    //#region Font Size
     font10: {
       fontSize: 10,
     },
+    font12: {
+      fontSize: 12,
+    },
+    font14: {
+      fontSize: 14,
+    },
+    //#endregion
+
     //#region Table styles
     table: {
       display: "table",
@@ -57,11 +62,9 @@ function MyDocument() {
       width: "100%",
     },
     tableRow: {
-      margin: "auto",
       flexDirection: "row",
     },
     tableCell: {
-      fontSize: 12,
       padding: 3,
     },
 
@@ -92,17 +95,26 @@ function MyDocument() {
     cell5: {
       width: "5%",
     },
+    cell6: {
+      width: "6%",
+    },
     cell10: {
       width: "10%",
     },
     cell15: {
       width: "15%",
     },
+    cell17_5: {
+      width: "17.5%",
+    },
     cell20: {
       width: "20%",
     },
     cell30: {
       width: "30%",
+    },
+    cell38: {
+      width: "38%",
     },
     cell40: {
       width: "40%",
@@ -126,7 +138,7 @@ function MyDocument() {
 
   return (
     <div style={{ width: "100%", height: "100vh", overflow: "hidden" }}>
-      <PDFViewer width="100%" height="100%" fileName={pdfName}>
+      <PDFViewer width="100%" height="100%">
         <Document>
           <Page size="A4" style={styles.page} wrap orientation="landscape">
             <div>
@@ -141,11 +153,18 @@ function MyDocument() {
                       styles.tableCell,
                       styles.aligncenter,
                       styles.cell50,
+                      { height: 70 },
                     ]}
                   >
-                    <Text>MANGALORE CHEMICALS & FERTILIZERS LTD.,</Text>
-                    <Text>MANGALORE-10</Text>
-                    <Text>Returnable Material Gate Pass (RMGP)</Text>
+                    <Text style={[styles.font14, { marginTop: 8 }]}>
+                      MANGALORE CHEMICALS & FERTILIZERS LTD.,
+                    </Text>
+                    <Text style={[styles.font10, { marginTop: 5 }]}>
+                      MANGALORE-10
+                    </Text>
+                    <Text style={[styles.font12, { marginTop: 5 }]}>
+                      Returnable Material Gate Pass (RMGP)
+                    </Text>
                   </View>
 
                   <View
@@ -162,13 +181,16 @@ function MyDocument() {
                           styles.aligncenter,
                           styles.cell50,
                           styles.leftBorder,
-                          { height: 48 },
+                          { height: 70 },
                         ]}
                       >
-                        <Text style={[styles.font10, { marginTop: "8" }]}>
-                          1. Department: IT{" "}
+                        <Text style={[styles.font12, { marginTop: "5" }]}>
+                          1. Department:
                         </Text>
-                        <Text style={[styles.font10, { marginTop: "5" }]}>
+                        <Text style={[styles.font12, { marginTop: "5" }]}>
+                          IT
+                        </Text>
+                        <Text style={[styles.font12, { marginTop: "8" }]}>
                           2. Date: 27/11/2023
                         </Text>
                       </View>
@@ -178,10 +200,10 @@ function MyDocument() {
                           styles.aligncenter,
                           styles.cell50,
                           styles.leftBorder,
-                          { height: 48 },
+                          { height: 70 },
                         ]}
                       >
-                        <Text style={{ marginTop: "15" }}> S.No : {id}</Text>
+                        <Text style={{ marginTop: 25 }}> S.No : {id}</Text>
                       </View>
                     </View>
                   </View>
@@ -189,16 +211,18 @@ function MyDocument() {
               </View>
 
               {/* 2nd Row */}
-              <View style={styles.table}>
+              <View style={styles.tablewithoutborder}>
                 <View style={styles.tableRow}>
                   <View
                     style={[
                       styles.tableCell,
                       styles.cell70,
                       styles.aligncenter,
+                      styles.leftBorder,
+                      styles.bottomBorder,
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>
+                    <Text style={[styles.font10]}>
                       For Use Of Originating Dept
                     </Text>
                   </View>
@@ -208,9 +232,11 @@ function MyDocument() {
                       styles.cell30,
                       styles.aligncenter,
                       styles.leftBorder,
+                      styles.rightBorder,
+                      styles.bottomBorder,
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>
+                    <Text style={[styles.font10]}>
                       For Use Of Security Dept
                     </Text>
                   </View>
@@ -223,48 +249,48 @@ function MyDocument() {
                   <View
                     style={[
                       styles.tableCell,
-                      styles.cell5,
+                      styles.cell6,
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 41 },
+                      { height: 50 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: "12" }}>
+                    <Text style={[styles.font12, { marginTop: "15" }]}>
                       3. S.No
                     </Text>
                   </View>
                   <View
                     style={[
                       styles.tableCell,
-                      styles.cell40,
+                      styles.cell38,
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 41 },
+                      { height: 50 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>
+                    <Text style={[styles.font12, { marginTop: 5 }]}>
                       4. Full Description Of Material
                     </Text>
-                    <Text style={{ fontSize: "10px" }}>
+                    <Text style={[styles.font10]}>
                       (With SI.No, Capacity Model, Size etc,.)
                     </Text>
-                    <Text style={{ fontSize: "10px" }}>
+                    <Text style={[styles.font10]}>
                       (Only one item per Gate Pass)
                     </Text>
                   </View>
                   <View
                     style={[
                       styles.tableCell,
-                      styles.cell5,
+                      styles.cell6,
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 41 },
+                      { height: 50 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: "10" }}>
+                    <Text style={[styles.font12, { marginTop: "15" }]}>
                       5. Qnty
                     </Text>
                   </View>
@@ -275,14 +301,27 @@ function MyDocument() {
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 41 },
+                      { height: 50 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: "3" }}>
+                    <Text style={[styles.font12, { marginTop: "3" }]}>
                       6. Expected
                     </Text>
-                    <Text style={{ fontSize: "10px", marginTop: "3" }}>
-                      Date Of Return
+                    <Text
+                      style={[
+                        styles.font12,
+                        { marginTop: "3", marginLeft: 13 },
+                      ]}
+                    >
+                      Date Of
+                    </Text>
+                    <Text
+                      style={[
+                        styles.font12,
+                        { marginTop: "3", marginLeft: 12 },
+                      ]}
+                    >
+                      Return
                     </Text>
                   </View>
                   <View
@@ -292,13 +331,13 @@ function MyDocument() {
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 41 },
+                      { height: 50 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: "3" }}>
+                    <Text style={[styles.font12, { marginTop: "7" }]}>
                       7. Value
                     </Text>
-                    <Text style={{ fontSize: "10px", marginTop: "3" }}>
+                    <Text style={[styles.font12, { marginTop: "3" }]}>
                       (Apprx.Rs)
                     </Text>
                   </View>
@@ -309,58 +348,59 @@ function MyDocument() {
                       styles.leftBorder,
                       styles.rightBorder,
                       styles.bottomBorder,
-                      { height: 41 },
+                      { height: 50 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: "3" }}>
+                    <Text style={[styles.font12, { marginTop: "1" }]}>
                       17. Sec. Count. No.
                     </Text>
                   </View>
                 </View>
               </View>
 
-              {/* Material Bynamic Data 4th Row */}
+              {/* 4th Row Material Bynamic Data */}
               <View style={styles.tablewithoutborder}>
                 <View style={styles.tableRow}>
                   <View
                     style={[
                       styles.tableCell,
-                      styles.cell5,
+                      styles.cell6,
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 40 },
+                      { height: 80 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>1</Text>
+                    <Text style={[styles.font10]}>1</Text>
                   </View>
                   <View
                     style={[
                       styles.tableCell,
-                      styles.cell40,
-                      styles.aligncenter,
+                      styles.cell38,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 40 },
+                      { height: 80 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>
+                    <Text style={[styles.font10]}>
                       Full Description of the Bur CutterFull Description of the
                       Bur CutterFull Description of the Bur CutterFull
-                      Description of the Bur Cutter
+                      Description of the Bur CutterFull Description of the Bur
+                      CutterFull Description of the Bur CutterFull Description
+                      of the Bur CutterFull Description of the Bur Cutter
                     </Text>
                   </View>
                   <View
                     style={[
                       styles.tableCell,
-                      styles.cell5,
+                      styles.cell6,
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 40 },
+                      { height: 80 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>1</Text>
+                    <Text style={[styles.font10]}>1</Text>
                   </View>
                   <View
                     style={[
@@ -369,10 +409,10 @@ function MyDocument() {
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 40 },
+                      { height: 80 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>30/11/2023</Text>
+                    <Text style={[styles.font10]}>30/11/2023</Text>
                   </View>
                   <View
                     style={[
@@ -381,10 +421,10 @@ function MyDocument() {
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.bottomBorder,
-                      { height: 40 },
+                      { height: 80 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>40000</Text>
+                    <Text style={[styles.font10]}>80000</Text>
                   </View>
                   <View
                     style={[
@@ -393,27 +433,26 @@ function MyDocument() {
                       styles.leftBorder,
                       styles.rightBorder,
                       styles.bottomBorder,
-                      { height: 40 },
+                      { height: 80 },
                     ]}
                   >
                     <View
                       style={[
                         styles.tableRow,
-                        styles.aligncenter,
                         styles.bottomBorder,
                         { width: 232, height: 20 },
                       ]}
                     >
                       <Text
-                        style={{
-                          fontSize: "10px",
-                          marginTop: 1,
-                          marginLeft: 87,
-                        }}
+                        style={[
+                          styles.font12,
+                          { marginLeft: 85, marginTop: 3 },
+                        ]}
                       >
                         Date & Time
                       </Text>
                     </View>
+
                     <View
                       style={[
                         styles.tableRow,
@@ -429,7 +468,7 @@ function MyDocument() {
                           styles.aligncenter,
                         ]}
                       >
-                        <Text style={{ fontSize: "10px" }}>18. OUT</Text>
+                        <Text style={[styles.font10]}>18. OUT</Text>
                       </View>
                       <View
                         style={[
@@ -439,7 +478,39 @@ function MyDocument() {
                           styles.leftBorder,
                         ]}
                       >
-                        <Text style={{ fontSize: "10px" }}>19. IN</Text>
+                        <Text style={[styles.font10]}>19. IN</Text>
+                      </View>
+                    </View>
+
+                    <View
+                      style={[
+                        styles.tableRow,
+                        styles.aligncenter,
+                        { width: 232, height: 40 },
+                      ]}
+                    >
+                      <View
+                        style={[
+                          styles.tableCell,
+                          styles.cell50,
+                          styles.aligncenter,
+                        ]}
+                      >
+                        <Text style={[styles.font10, { marginTop: 11 }]}>
+                          27/11/2023
+                        </Text>
+                      </View>
+                      <View
+                        style={[
+                          styles.tableCell,
+                          styles.cell50,
+                          styles.aligncenter,
+                          styles.leftBorder,
+                        ]}
+                      >
+                        <Text style={[styles.font10, { marginTop: 11 }]}>
+                          30/11/2023
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -456,30 +527,28 @@ function MyDocument() {
                       styles.leftBorder,
                       styles.bottomBorder,
                       styles.rightBorder,
-                      {height:40}
+                      { height: 50 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>8. Purpose:</Text>
+                    <Text style={[styles.font12]}>8. Purpose:</Text>
+                  </View>
+                  <View style={[styles.tableCell, styles.cell20]}>
+                    <Text style={[styles.font12]}>11. Proposed By</Text>
+                    <Text
+                      style={[styles.font10,{ marginTop: 12, marginLeft: 16 }]}
+                    >
+                      Name:
+                    </Text>
                   </View>
                   <View
-                    style={[
-                      styles.tableCell,
-                      styles.cell20,
-                    ]}
+                    style={[styles.tableCell, styles.cell20, styles.leftBorder]}
                   >
-                    <Text style={{ fontSize: "10px" }}>11. Proposed By</Text>
-                    <Text style={{ fontSize: "10px", marginTop: 8, marginLeft: 16}}>Name:</Text>
-                    
-                  </View>
-                  <View
-                    style={[
-                      styles.tableCell,
-                      styles.cell20,
-                      styles.leftBorder,
-                    ]}
-                  >
-                    <Text style={{ fontSize: "10px" }}>12. Authorised By</Text>
-                    <Text style={{ fontSize: "10px", marginTop: 8, marginLeft: 16}}>Name:</Text>
+                    <Text style={[styles.font12]}>12. Authorised By</Text>
+                    <Text
+                      style={[styles.font10,{ marginTop: 12, marginLeft: 16 }]}
+                    >
+                      Name:
+                    </Text>
                   </View>
 
                   <View
@@ -488,10 +557,11 @@ function MyDocument() {
                       styles.cell15,
                       styles.aligncenter,
                       styles.leftBorder,
-                      styles.bottomBorder
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: 6 }}>Entered in Cont. Reg. & Pink Copy Filed</Text>
+                    <Text style={[styles.font10,{ marginTop: 10 }]}>
+                      Entered in Cont. Reg. & Pink Copy Filed
+                    </Text>
                   </View>
 
                   <View
@@ -501,10 +571,11 @@ function MyDocument() {
                       styles.aligncenter,
                       styles.leftBorder,
                       styles.rightBorder,
-                      styles.bottomBorder
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: 6 }}>Received in Sec. Cont. Reg. & Yellow Copy File</Text>
+                    <Text style={[styles.font10,{ marginTop: 10 }]}>
+                      Received in Sec. Cont. Reg. & Yellow Copy File
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -519,29 +590,40 @@ function MyDocument() {
                       styles.leftBorder,
                       styles.bottomBorder,
                       styles.rightBorder,
-                      {height:40}
+                      { height: 50 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>9. Address where materials are to be sent:</Text>
+                    <Text style={[styles.font12]}>
+                      9. Address where materials are to be sent:
+                    </Text>
+                  </View>
+                  <View style={[styles.tableCell, styles.cell20]}>
+                    <Text style={[styles.font10,{ marginLeft: 16 }]}>
+                      Sign: __________________
+                    </Text>
+                    <Text
+                      style={[styles.font10,{
+                        marginTop: 14,
+                        marginLeft: 16,
+                      }]}
+                    >
+                      Desn:
+                    </Text>
                   </View>
                   <View
-                    style={[
-                      styles.tableCell,
-                      styles.cell20,
-                    ]}
+                    style={[styles.tableCell, styles.cell20, styles.leftBorder]}
                   >
-                    <Text style={{ fontSize: "10px", marginLeft: 16 }}>Sign: __________________</Text>
-                    <Text style={{ fontSize: "10px", marginTop: 10, marginLeft: 16 }}>Desn: </Text>
-                  </View>
-                  <View
-                    style={[
-                      styles.tableCell,
-                      styles.cell20,
-                      styles.leftBorder
-                    ]}
-                  >
-                    <Text style={{ fontSize: "10px", marginLeft: 16 }}>Sign: __________________</Text>
-                    <Text style={{ fontSize: "10px", marginTop: 10, marginLeft: 16 }}>Desn: </Text>
+                    <Text style={[styles.font10,{ marginLeft: 16 }]}>
+                      Sign: __________________
+                    </Text>
+                    <Text
+                      style={[styles.font10,{
+                        marginTop: 14,
+                        marginLeft: 16,
+                      }]}
+                    >
+                      Desn:
+                    </Text>
                   </View>
 
                   <View
@@ -553,13 +635,13 @@ function MyDocument() {
                     ]}
                   >
                     <View
-                    style={[
-                      styles.tableCell,
-                      styles.aligncenter,
-                      styles.border,
-                      {height: 30, width: 110}
-                    ]}
-                  ></View>
+                      style={[
+                        styles.tableCell,
+                        styles.aligncenter,
+                        styles.border,
+                        { height: 30, width: 109 },
+                      ]}
+                    ></View>
                   </View>
 
                   <View
@@ -571,13 +653,13 @@ function MyDocument() {
                     ]}
                   >
                     <View
-                    style={[
-                      styles.tableCell,
-                      styles.aligncenter,
-                      styles.border,
-                      {height: 30, width: 109}
-                    ]}
-                  ></View>
+                      style={[
+                        styles.tableCell,
+                        styles.aligncenter,
+                        styles.border,
+                        { height: 30, width: 109 },
+                      ]}
+                    ></View>
                   </View>
                 </View>
               </View>
@@ -592,30 +674,44 @@ function MyDocument() {
                       styles.leftBorder,
                       styles.bottomBorder,
                       styles.rightBorder,
-                      {height:40}
+                      { height: 60 },
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>10. Mode Of Transport:</Text>
-                    <Text style={{ fontSize: "10px", marginLeft: 16, marginTop: 3 }}>Regn No:</Text>
+                    <Text style={[styles.font12]}>
+                      10. Mode Of Transport:
+                    </Text>
+                    <Text
+                      style={[styles.font12,{ marginLeft: 19, marginTop: 8 }]}
+                    >
+                      Regn No:
+                    </Text>
                   </View>
                   <View
                     style={[
                       styles.tableCell,
                       styles.cell20,
-                      styles.bottomBorder
+                      styles.bottomBorder,
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: 5, marginLeft: 16 }}>T.No: </Text>
+                    <Text
+                      style={[styles.font10,{ marginTop: 5, marginLeft: 16 }]}
+                    >
+                      T.No:
+                    </Text>
                   </View>
                   <View
                     style={[
                       styles.tableCell,
                       styles.cell20,
                       styles.leftBorder,
-                      styles.bottomBorder
+                      styles.bottomBorder,
                     ]}
                   >
-                    <Text style={{ fontSize: "10px", marginTop: 5, marginLeft: 16 }}>T.No: </Text>
+                    <Text
+                      style={[styles.font10,{ marginTop: 5, marginLeft: 16 }]}
+                    >
+                      T.No:
+                    </Text>
                   </View>
 
                   <View
@@ -623,12 +719,16 @@ function MyDocument() {
                       styles.tableCell,
                       styles.cell15,
                       styles.leftBorder,
-                      styles.bottomBorder
+                      styles.bottomBorder,
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>Sign: ____________ </Text>
-                    <Text style={{ fontSize: "10px" }}>Name: ____________</Text>
-                    <Text style={{ fontSize: "10px" }}>Design: ____________</Text>
+                    <Text style={[styles.font10]}>
+                      Sign: ______________
+                    </Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>Name: _____________</Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>
+                      Design: _____________
+                    </Text>
                   </View>
 
                   <View
@@ -637,12 +737,123 @@ function MyDocument() {
                       styles.cell15,
                       styles.leftBorder,
                       styles.rightBorder,
-                      styles.bottomBorder
+                      styles.bottomBorder,
                     ]}
                   >
-                    <Text style={{ fontSize: "10px" }}>Sign: ____________</Text>
-                    <Text style={{ fontSize: "10px" }}>Name: ____________</Text>
-                    <Text style={{ fontSize: "10px" }}>Design: ____________</Text>
+                    <Text style={[styles.font10]}>Sign: ______________</Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>Name: _____________</Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>
+                      Design: _____________
+                    </Text>
+                  </View>
+                </View>
+              </View>
+
+              {/* 8th Row with Remarks*/}
+              <View style={styles.tablewithoutborder}>
+                <View style={styles.tableRow}>
+                  <View
+                    style={[
+                      styles.tableCell,
+                      styles.cell17_5,
+                      styles.leftBorder,
+                      styles.bottomBorder,
+                      { height: 130 },
+                    ]}
+                  >
+                    <Text style={[styles.font12,{ marginTop: "1" }]}>
+                      13. Taken Out By
+                    </Text>
+                    <Text style={[styles.font10,{ marginTop: "10" }]}>
+                      Sign: __________________
+                    </Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>Name: _________________</Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>
+                      Design: _________________
+                    </Text>
+                    <Text style={[styles.font10,{marginTop: 10}]}>
+                      MCF Emp : YES / NO
+                    </Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>
+                      Co (if available):
+                    </Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.tableCell,
+                      styles.cell17_5,
+                      styles.leftBorder,
+                      styles.bottomBorder,
+                      { height: 130 },
+                    ]}
+                  >
+                    <Text style={[styles.font12,{ marginTop: "1" }]}>
+                      14. Brought In By
+                    </Text>
+                    <Text style={[styles.font10,{ marginTop: "10" }]}>
+                      Sign: __________________
+                    </Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>Name: _________________</Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>
+                      Design: _________________
+                    </Text>
+                    <Text style={[styles.font10,{marginTop: 10}]}>
+                      MCF Emp : YES / NO
+                    </Text>
+                    <Text style={[styles.font10,{marginTop: 8}]}>
+                      Co (if available):
+                    </Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.tableCell,
+                      styles.cell20,
+                      styles.leftBorder,
+                      styles.bottomBorder,
+                      { height: 130 },
+                    ]}
+                  >
+                    <Text style={[styles.font12,{ marginTop: "1" }]}>
+                      15. Received in the Dept
+                    </Text>
+                    <Text style={[styles.font10,{ marginTop: 15 }]}>
+                      By: _____________________
+                    </Text>
+                    <Text style={[styles.font10,{ marginTop: 12 }]}>
+                      Sign: ____________________
+                    </Text>
+                    <Text style={[styles.font10,{marginTop: 12}]}>Name: ___________________</Text>
+                    <Text style={[styles.font10,{marginTop: 12}]}>
+                      Design: ___________________
+                    </Text>
+                    
+                  </View>
+                  <View
+                    style={[
+                      styles.tableCell,
+                      styles.cell15,
+                      styles.leftBorder,
+                      styles.bottomBorder,
+                      { height: 130 },
+                    ]}
+                  >
+                    <Text style={[styles.font12,{ marginTop: "1" }]}>
+                      16.
+                    </Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.tableCell,
+                      styles.cell30,
+                      styles.leftBorder,
+                      styles.bottomBorder,
+                      styles.rightBorder,
+                      { height: 130 },
+                    ]}
+                  >
+                    <Text style={[styles.font12,{ marginTop: "3" }]}>
+                      20. Remarks
+                    </Text>
                   </View>
                 </View>
               </View>
